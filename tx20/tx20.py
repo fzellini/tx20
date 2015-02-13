@@ -59,7 +59,7 @@ class TX20():
                 pos += 1
             elements.append(acc)
         #  checksum
-        chk = (elements[0] + (elements[1]&0xf) + ((elements[1] >> 4) & 0xf) + ((elements[1] >> 8) & 0xf))
+        chk = (elements[0] + (elements[1] & 0xf) + ((elements[1] >> 4) & 0xf) + ((elements[1] >> 8) & 0xf))
         chk &= 0xf
         if sa == 4 and elements[0] == elements[3] and elements[1] == elements[4] and elements[2] == chk:
             # print "checksum ok"
@@ -97,8 +97,3 @@ class TX20():
     def test(self, evs):
         for ev in evs:
             self.sm(None, ev[1], ev[0])
-
-
-
-
-
